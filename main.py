@@ -12,12 +12,14 @@ def caesar(plain_text, shift, direction):
     
     word = ""
 
+    if direction == "decode":
+           shift *= -1
+           
     for letter in plain_text:
 
         place = alphabet.index(letter)
 
-        if direction == "decode":
-           shift *= -1
+
         
         new_place = place + shift
         
