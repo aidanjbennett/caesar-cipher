@@ -1,3 +1,7 @@
+from art import logo
+
+print(logo)
+
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
             'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
             's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -17,19 +21,24 @@ def caesar(plain_text, shift, direction):
     if direction == "decode":
            shift *= -1
 
-    for letter in plain_text:
-
-        place = alphabet.index(letter)
-
-        new_place = place + shift
+    for char in plain_text:
         
-        new_letter = alphabet[new_place]
+        if char in alphabet:
+            
+            place = alphabet.index(char)
 
-        word += new_letter
+            new_place = place + shift
+        
+            new_letter = alphabet[new_place]
+
+            word += new_letter
+        else:
+            word += char
+
 
     print(f"\nThe {direction} version is {word}")
 
-caesar(plain_text=text_input, shift=shift_input_int, direction=direction_input)
+shift_input_int = shift_input_int % 26
 
-input("\nPress any key to exit")
+caesar(plain_text=text_input, shift=shift_input_int, direction=direction_input)
 
